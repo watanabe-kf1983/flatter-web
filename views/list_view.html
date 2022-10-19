@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title> Hello flatter-web </title>
+</head>
+
+<body>
+    <h1> Hello flatter-web !!! </h1>
+    <ul>
+        {{#namelist}}
+        <li><a href="flatter/{{.}}">{{.}}をおだてる</a></li>
+        {{/namelist}}
+    </ul>
+
+    <hr>
+
+    <form method="GET" action="/flatter-by-query">
+        おだてる人：
+        <input type="text" name="name"> さん
+        <button type="submit">クエリパラメータで送信</button>
+    </form>
+
+    <form method="POST" action="/flatter-by-post">
+        おだてる人： 
+        <input type="text" name="name"> さん
+        <button type="submit">リクエストボディで送信</button>
+    </form>
+    <hr>
+    <br>
+    あなたが いままでに おだてた人たち
+    <ul>
+        {{#history}}
+        <li>{{.}}さん</li>
+        {{/history}}
+    </ul>
+
+    <a href="session-destroy">リセット</a>
+
+</body>
+
+</html>
