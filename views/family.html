@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title> Family </title>
+</head>
+
+<body>
+    <h1> Family </h1>
+    <table>
+        <tr>
+            <th>なまえ</th>
+            <th>年齢</th>
+        </tr>
+        {{#family}}
+        <tr>
+            <td>{{full_name}}</td>
+            <td class="number">{{age}}</td>
+            <td>
+                <form method="POST" action="/remove-family">
+                   <input type="hidden" name="name" value="{{full_name}}">
+                   <input type="hidden" name="age" value="{{age}}">
+                   <button type="submit">削除</button>
+                </form>           
+            </td>
+        </tr>
+        {{/family}}
+    </table>
+
+    <hr>
+    <form method="POST" action="/add-family">
+        なまえ： <input type="text" name="name" size="6"> さん
+        <br>
+        年齢： <input type="text" name="age" size="3"> 才
+        <button type="submit">追加</button>
+    </form>
+    <hr>
+
+    <a href="/">ホームへ</a>
+
+</body>
+
+</html>
